@@ -1,6 +1,6 @@
 package com.wbl.base;
 
-import com.wbl.utils.RESTUtil;
+import com.wbl.utils.rest.RESTUtil;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 

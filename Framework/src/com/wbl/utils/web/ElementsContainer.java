@@ -1,4 +1,4 @@
-package com.wbl.utils;
+package com.wbl.utils.web;
 
 import java.util.Collection;
 

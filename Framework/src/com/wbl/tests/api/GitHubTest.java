@@ -25,6 +25,11 @@ public class GitHubTest extends BaseApiTest {
     public Object[][] getUsers() {
         return new Object[][]{{"users/whiteboxhub"}};
     }
+/*
+    @DataProvider(name = "users-data")
+    public Object[][] getJsonData() {
+        return new Object[][]{{"users/whiteboxhub"}};
+    }*/
 
     @Test(priority = 1, alwaysRun = true, dataProvider = "users-data")
     public void testUser(String username) {
@@ -32,13 +37,13 @@ public class GitHubTest extends BaseApiTest {
             restUtil.getJSONEntity(username);
             assertNotEquals(restUtil.isValidResponse(),null);
             assertEquals(restUtil.getStatusCode(), HttpStatus.SC_OK);
-            assertEquals(restUtil.getContentType(),_config.ContentType);
-            if(restUtil.getContentLength() != null)
+            assertEquals(restUtil.header.getContentType(),_config.ContentType);
+            if(restUtil.header.getContentLength() != null)
             {
-                assertEquals(restUtil.getContentLength(),_config.ContentLength);
+                assertEquals(restUtil.header.getContentLength(),_config.ContentLength);
             }
             assertEquals(restUtil.getLocale(),_config.Locale);
-            assertEquals(restUtil.getServer(),_config.Server);
+            assertEquals(restUtil.header.getServer(),_config.Server);
             testJsonObject();
 
 
@@ -52,7 +57,7 @@ public class GitHubTest extends BaseApiTest {
         HashMap<String,String> jsonPropMap = _config.JsonMap;
         for (String key : jsonPropMap.keySet())
         {
-            assertEquals(restUtil.parseJsonObject(key),jsonPropMap.get(key));
+            //assertEquals(restUtil.json.getJsonValue(key),jsonPropMap.get(key));
         }
     }
 

@@ -1,5 +1,6 @@
-package com.wbl.utils;
+package com.wbl.utils.web;
 
+import com.wbl.utils.Configuration;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
@@ -87,7 +88,7 @@ public class PageDriver implements ElementsContainer {
         _webDriver.quit();
         _webDriver = null;
 
-        // TODO: Kill web driver process: chromedriver.exe, IEDriverServer.exe (test regarding should it be done on start)
+        // TODO: Kill rest driver process: chromedriver.exe, IEDriverServer.exe (test regarding should it be done on start)
     }
 
     public void open(String url) {
@@ -227,7 +228,7 @@ public class PageDriver implements ElementsContainer {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized"); //To maximize the browser
         options.addArguments("allow-file-access-from-files");
-        options.addArguments("disable-web-security");
+        options.addArguments("disable-rest-security");
         options.addArguments("ignore-certifcate-errors");
         options.addArguments("--always-authorize-plugins=true");
 

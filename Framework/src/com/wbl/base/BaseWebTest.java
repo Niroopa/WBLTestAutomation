@@ -1,7 +1,7 @@
 package com.wbl.base;
 
-import com.wbl.utils.PageDriver;
-import com.wbl.utils.WBy;
+import com.wbl.utils.web.PageDriver;
+import com.wbl.utils.web.WBy;
 import org.testng.annotations.*;
 
 /**

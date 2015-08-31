@@ -1,7 +1,7 @@
 package com.wbl.pages;
 
 import com.wbl.base.BasePage;
-import com.wbl.utils.PageDriver;
+import com.wbl.utils.web.PageDriver;
 
 import java.util.Set;
 
