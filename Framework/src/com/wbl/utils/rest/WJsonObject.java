@@ -47,7 +47,7 @@ public class WJsonObject {
         }
     }*/
 
-    public WJsonObject getChildJsonObject(String mKey)
+    public JSONObject getJsonObject(String mKey)
     {
         Object json;
         WJsonObject childObj = null;
@@ -55,13 +55,13 @@ public class WJsonObject {
             json = jsonObj.get(mKey);
             if(json != null && (json instanceof JSONObject || json instanceof JSONArray))
             {
-                childObj = (WJsonObject)json;
+                this.jsonObj = (JSONObject)json;
             }
         } catch (JSONException e) {
             _logger.error(e);
         }
 
-        return childObj;
+        return this.jsonObj;
     }
 
     public boolean isKeyAvailable(String mKey)
