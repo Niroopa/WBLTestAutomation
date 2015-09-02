@@ -1,7 +1,7 @@
 # WBLTestAutomation
 WBLTestAutomation
 
-Selenium Framework with following concepts:
+Automation Framework for Web UI/REST Api/Mobile Web and Mobile Native Apps with following concepts:
 
 1. Page Object Pattern
 2. UI Mapping
