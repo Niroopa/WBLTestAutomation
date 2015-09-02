@@ -1,6 +1,6 @@
 package com.wbl.pages;
 
-import com.wbl.utils.PageDriver;
+import com.wbl.utils.web.PageDriver;
 
 /**
  * Created by svelupula on 8/14/2015.

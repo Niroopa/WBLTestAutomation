@@ -1,6 +1,6 @@
 package com.wbl.base;
 
-import com.wbl.utils.PageDriver;
+import com.wbl.utils.web.PageDriver;
 import org.apache.log4j.Logger;
 
 /**

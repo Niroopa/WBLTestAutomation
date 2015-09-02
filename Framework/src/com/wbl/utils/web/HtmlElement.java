@@ -1,4 +1,4 @@
-package com.wbl.utils;
+package com.wbl.utils.web;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
