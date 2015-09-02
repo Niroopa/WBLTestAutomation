@@ -2,14 +2,12 @@ package com.wbl.utils.rest;
 
 import com.wbl.utils.web.PageDriver;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by Shilpi on 8/31/2015.
@@ -29,50 +27,13 @@ public class WJsonObject {
         _logger = Logger.getLogger(PageDriver.class);
     }
 
-    /*public void setJsonArray(String mJsonString)
-    {
-        try {
-            this.jsonArray  = new JSONArray(mJsonString);
-        } catch (JSONException e) {
-            _logger.error(e);
-        }
-    }
-
-    public void setJsonObject(String mJsonString)
-    {
-        try {
-            this.jsonObj  = new JSONObject(mJsonString);
-        } catch (JSONException e) {
-            _logger.error(e);
-        }
-    }*/
-
-    public JSONObject getJsonObject(String mKey)
-    {
-        Object json;
-        WJsonObject childObj = null;
-        try {
-            json = jsonObj.get(mKey);
-            if(json != null && (json instanceof JSONObject || json instanceof JSONArray))
-            {
-                this.jsonObj = (JSONObject)json;
-            }
-        } catch (JSONException e) {
-            _logger.error(e);
-        }
-
-        return this.jsonObj;
-    }
-
     public boolean isKeyAvailable(String mKey)
     {
         boolean available = false;
         Iterator<String> jsonKeys = jsonObj.keys();
-        while (jsonKeys.hasNext())
-        {
+        while (jsonKeys.hasNext()) {
             String key = jsonKeys.next();
-            if(key.equals(mKey))
-            {
+            if (key.equals(mKey)) {
                 available = true;
                 break;
             }
@@ -82,10 +43,9 @@ public class WJsonObject {
 
     }
 
-    public boolean isValueNotNull(String mKey)
-    {
+    public boolean isValueNotNull(String mKey) {
         try {
-            boolean  isNull = jsonObj.get(mKey).toString() != null ? true:false;
+            boolean isNull = jsonObj.get(mKey).toString() != null ? true : false;
             return isNull;
         } catch (JSONException e) {
             _logger.error(e);
@@ -104,18 +64,15 @@ public class WJsonObject {
         return value;
     }
 
-    public int getJsonIntValue(String mKey)
-    {
+    public int getJsonIntValue(String mKey) {
         int intValue = 0;
         String value = null;
         try {
             value = jsonObj.get(mKey).toString();
-            if(!StringUtils.isNumeric(value))
-            {
+            if (!StringUtils.isNumeric(value)) {
                 _logger.info("Passed key doesn't contain a valid integer value");
                 return 0;
-            }
-            else{
+            } else {
                 intValue = Integer.parseInt(value);
             }
         } catch (JSONException e) {
@@ -124,25 +81,34 @@ public class WJsonObject {
         return intValue;
     }
 
-    public boolean getJsonBooleanVal(String mKey)
-    {
+    public boolean getJsonBooleanVal(String mKey) {
         boolean boolValue = true;
         String value = null;
         try {
             value = jsonObj.get(mKey).toString();
             boolValue = Boolean.valueOf(value);
-          /*  if(!Boolean.valueOf(value))
-            {
-                _logger.info("Passed key doesn't contain a valid boolean value");
-                return false;
-            }
-            else{
-                boolValue = Boolean.valueOf(value);
-            }*/
         } catch (JSONException e) {
             _logger.error(e);
         }
         return boolValue;
+    }
+
+
+    public JSONObject getJsonObject(String mKey)
+    {
+        Object json;
+        WJsonObject childObj = null;
+        try {
+            json = jsonObj.get(mKey);
+            if(json != null && (json instanceof JSONObject || json instanceof JSONArray))
+            {
+                this.jsonObj = (JSONObject)json;
+            }
+        } catch (JSONException e) {
+            _logger.error(e);
+        }
+
+        return this.jsonObj;
     }
 
     public boolean isPropertyArray(String mKey)

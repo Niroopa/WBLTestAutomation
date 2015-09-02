@@ -1,7 +1,6 @@
 package com.wbl.utils.rest;
 
 import com.wbl.utils.Configuration;
-import com.wbl.utils.web.PageDriver;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -22,17 +21,24 @@ public class RESTUtil {
     private Logger _logger;
     private HttpUriRequest request;
     private HttpResponse response;
-    public Headers header = null;//Header[] headers; //response.getAllHeaders();
-    public WJsonObject json = null;
+    private Headers header = null;//Header[] headers; //response.getAllHeaders();
+    private WJsonObject json = null;
     private JSONArray jsonArray;
     //private JSONObject jsonObj;
 
     public RESTUtil(Configuration configuration) {
         _configuration = configuration;
-        _logger = Logger.getLogger(PageDriver.class);
+        _logger = Logger.getLogger(RESTUtil.class);
        this.header = new Headers();
     }
 
+    public WJsonObject getJson() {
+        return json;
+    }
+
+    public void setJson(WJsonObject json) {
+        this.json = json;
+    }
 
     private void get(String resource, String contentType, String accept, String authorization) throws Exception {
         request = new HttpGet(_configuration.BaseURI + resource);
@@ -78,5 +84,6 @@ public class RESTUtil {
     }
 
     public String getLocale() { return response.getLocale().toString();}
+
 
 }
