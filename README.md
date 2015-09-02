@@ -3,13 +3,19 @@ WBLTestAutomation
 
 Automation Framework for Web UI/REST Api/Mobile Web and Mobile Native Apps with following concepts:
 
-1. Page Object Pattern
-2. UI Mapping
-3. Data Driven
-4. Wrapper around WebDriver interfaces
-5. Support for IE, Chrome, Firefox and HTMLUnit
-6. Preference to CSS Selectors
-7. Supports Mobile web automation using emulator in Google Chrome
-8. REST Api Automation.
-9. Wrapper around JSON and Http Clients classes to expose simple methods.
-10. Supports Mobile automation using Appium
+    Page Object Pattern (Done)
+    UI Mapping (Done)
+    Data Driven (In Progress)
+    Wrapper around WebDriver interfaces (Done)
+    Support for IE, Chrome, Firefox and HTMLUnit (Done)
+    Preference to CSS Selectors (Done)
+    Supports Mobile web automation using emulator in Google Chrome (Done)
+    REST Api Automation. (Done)
+    Wrapper around JSON and Http Clients classes to expose simple methods. (In Progress)
+    Supports Mobile automation using Appium (In Progress)
+    Wrap methods for Select Api, Actions Api and JavascriptExecutor in PageDriver. (In Progress)
+    Maven Dependency Management (In Progress)
+    Implement screen shot Api (ToDo)
+    RallyDev Integration (ToDo)
+    Tool to generate CSS Selectors using browser plugin (ToDo)
+    Jenkins Integration (ToDo)
