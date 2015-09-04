@@ -12,7 +12,7 @@ import java.util.Iterator;
 /**
  * Created by Shilpi on 8/31/2015.
  */
-public class WJsonObject {
+public class JSONWrapper {
 
     private Logger _logger;
     private JSONArray jsonArray;
@@ -20,12 +20,20 @@ public class WJsonObject {
     //private JSONObject childJson;
     //private List<JSONObject> childJsonList = new ArrayList<JSONObject>();
 
-
-    public WJsonObject(JSONObject obj)
+    public JSONWrapper()
     {
-         this.jsonObj = obj;
         _logger = Logger.getLogger(PageDriver.class);
     }
+
+    public JSONWrapper(JSONArray array)
+    {
+        this.jsonArray = array;
+    }
+    public JSONWrapper(JSONObject obj)
+    {
+         this.jsonObj = obj;
+    }
+
 
     public boolean isKeyAvailable(String mKey)
     {
@@ -97,7 +105,7 @@ public class WJsonObject {
     public JSONObject getJsonObject(String mKey)
     {
         Object json;
-        WJsonObject childObj = null;
+        JSONWrapper childObj = null;
         try {
             json = jsonObj.get(mKey);
             if(json != null && (json instanceof JSONObject || json instanceof JSONArray))
@@ -144,7 +152,7 @@ public class WJsonObject {
             {
                 array = (JSONArray)obj;
                 value = getElement(array,index);
-                value = array.get(index).toString();
+                value = (String)array.get(index);
             }
         } catch (JSONException e) {
             _logger.error(e);
@@ -155,7 +163,7 @@ public class WJsonObject {
     public String getElement(JSONArray array , int index)
     {
         try {
-            return array.get(index).toString();
+            return (String)array.get(index);
         } catch (JSONException e) {
             _logger.error(e);
         }

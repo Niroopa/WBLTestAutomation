@@ -21,8 +21,8 @@ public class RESTUtil {
     private Logger _logger;
     private HttpUriRequest request;
     private HttpResponse response;
-    private Headers header = null;//Header[] headers; //response.getAllHeaders();
-    private WJsonObject json = null;
+    public Headers header = null;//Header[] headers; //response.getAllHeaders();
+    private JSONWrapper json = null;
     private JSONArray jsonArray;
     //private JSONObject jsonObj;
 
@@ -32,11 +32,11 @@ public class RESTUtil {
        this.header = new Headers();
     }
 
-    public WJsonObject getJson() {
+    public JSONWrapper getJson() {
         return json;
     }
 
-    public void setJson(WJsonObject json) {
+    public void setJson(JSONWrapper json) {
         this.json = json;
     }
 
@@ -63,6 +63,7 @@ public class RESTUtil {
         get(resource, null, "application/json", null);
         String json = IOUtils.toString(response.getEntity().getContent());
         jsonArray = new JSONArray(json);
+        setJson(new JSONWrapper(jsonArray));
     }
 
     public void getJSONEntity(String resource) throws Exception {
@@ -70,7 +71,7 @@ public class RESTUtil {
        // json.setJsonObject(IOUtils.toString(response.getEntity().getContent()));
         String json = IOUtils.toString(response.getEntity().getContent());
         JSONObject obj = new JSONObject(json);
-        new WJsonObject(obj);
+        setJson(new JSONWrapper(obj));
        // this.jsonObj = new JSONObject(jsonObj);
     }
 
